@@ -1,16 +1,16 @@
 # UAV-AIOT_COLLAB
 
-This repository contains code for an environmental monitoring system that collects data from various sensors and uploads it to ThingSpeak for visualization and analysis. The system uses an ESP32 microcontroller to read sensor data and establish a Wi-Fi connection for data transmission.
+Our research team has created this brilliant repository, over their research on UAVs ( Unmanned Aerial Vehicles) and their application in agricultural science, Load transport, weather prediction, and pollution index  from various sensors and edge computations to cloud architecture for visualization and further analysis with machine learning. Together we have made a complete system basic but compatible with UAV surveillance and exploration  in weather science and forecasting.
 ## Glimpses
 
-![9931112 fig 007](https://github.com/Souradeep2233/UAV-AIOT_COLLAB/assets/94059815/39795825-9793-4aa6-bd09-edef0153b666)
+![9931112 fig 007](https://github.com/Souradeep2233/UAV-AIOT_COLLAB/assets/94059815/940d7f80-a9a1-4c6a-bdb4-8546de226b9f)
 
 ## Sensors Used
 
 - DHT11: Measures temperature and humidity
 - BMP180: Measures atmospheric pressure
 - MQ7: Measures carbon monoxide (CO) concentration
-- MQ135: Measures air quality and detects multiple gases
+- MQ135: Measures NH3 and SOx concentration
 
 ## Hardware Requirements
 
@@ -37,6 +37,20 @@ This repository contains code for an environmental monitoring system that collec
 3. The data will be uploaded to the specified ThingSpeak channel for visualization and analysis.
 4. You can access the ThingSpeak channel to view the collected data and perform further analysis.
 
+## Modified Kalman Filter Description for noise reduction in data collection and transmission
+The Kalman filter is a recursive mathematical algorithm used for estimating the state of a dynamic system in the presence of uncertain and noisy measurements. It was developed by Rudolf Kalman in the early 1960s and has since found numerous applications in various fields, including control systems, robotics, navigation, computer vision, and signal processing.
+
+Algorithm :
+
+1. Initialization: The Kalman filter is initialized with the necessary parameters, including the state transition matrix (A), input matrix (B), measurement matrix (H), process noise covariance matrix (Q), measurement noise covariance matrix (R), initial state estimate (x0), and initial covariance matrix (P0). These parameters define the system dynamics and measurement characteristics, as well as the initial assumptions about the state and uncertainty.
+
+2. Reading and Filtering Sensor Data: Once the Kalman filter is set up with the proper parameters, it is used to read and filter the sensor data in a loop. For each sensor data point acquired from the IoT sensors on the UAV, the Kalman filter performs the prediction and update steps.
+
+3. Predict Step: The predict() method is called to forecast the upcoming state estimate and covariance using the state transition matrix (A) and the process noise covariance matrix (Q). This step predicts the UAV's state based on its previous state, system dynamics, and any external inputs (if applicable).
+
+4. Update Step: The update() method is called to update the state estimate and covariance using the measurement matrix (H), measurement noise covariance matrix (R), and the actual sensor measurement (y). The Kalman filter calculates the Kalman gain (K) to correct the predicted state estimate based on the sensor measurement.
+
+5. Repeat: The process of reading the sensor data, predicting the state estimate, updating the state estimate with measurements, and repeating this loop for all sensor data points allows the Kalman filter to iteratively refine its estimates of the UAV's true state.
 
 ## Machine Learning Technologies Implemented 
 
@@ -71,7 +85,7 @@ Note :
 
 With validation experiments still being tested and optimized, live on UAV, models with their weights and biases are more or less kept the same throughout the flight experiments. Further modifications are to be tracked and updated.
 
-## Contributing
+## Contributions
 
 Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
